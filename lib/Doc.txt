@@ -1,0 +1,47 @@
+- State là gì: State là thông tin thể hiện trên Widget mà có thể thay đổi trong suốt thời gian sống sót 
+trên vòng đời của Widget
+
+- StatefulWidget:
+ +  Bản thân Widget này sẽ chủ động update UI.
+ + StatefulWidget là chỉ đơn giản là một Widget mà CÓ State tức là nó có data có thể thay đổi được. 
+   Khi state thay đổi, nó sẽ gọi lại hàm build để rebuild widget. Nhờ đó mà UI thay đổi.
+
+- StatelessWidget:
+ + Bản thân Widget này sẽ thụ động update UI, hay nói cách khác là bị Widget khác ép phải update UI.
+ + StatelessWidget đơn giản là một Widget KHÔNG CÓ State. 
+   Tức là nó chỉ có data không thể thay đổi (data bất biến như final data, const, ...). 
+
+- Accessibility: Khả năng tiếp cận
+ + Font chữ, trình đọc màn hình, ra lệnh bằng giọng nói, độ tương phản màu giao diện
+ + Sử dụng các công cụ quét để kiểm tra độ tiếp cận.
+
+ - InheritedWidget là một nơi lưu trữ data và cung cấp data cho widget con trong widget tree. 
+   Tất cả widget con của InheritedWidget đều có thể truy cập vào InheritedWidget để lấy data. 
+   Tức là từ vị trí InheritedWidget, bạn không cần thiết phải truyền data xuống từng 1 widget 
+   con một nữa mà Widget con ở bất kỳ vị trí nào trên widget tree muốn lấy data từ InheritedWidget.
+
+   Không để cho StatefulWidget được phép rebuild cả sub widget tree nữa. Có 3 cách để làm được điều đó:
+        Sử dụng const widgets
+        Widget được truyền vào StatefulWidget cha như một argument và ta có thể tái sử dụng
+
+- Stream: Là một luồng dữ liệu có đầu ra và đầu vào. Đẩy dữ liệu dùng sink, public dữ liệu ra dùng stream
+    + Chuyển dữ liệu hoặc chỉnh sửa thì dùng StreamTransformer
+    + Handle Stream thi dung StreamController
+
+    Co 2 loại stream là: 
+    + Single-Subscription Stream: Khi public du lieu thi chi cho phep 1 thang dang ky lang nghe
+    + Broadcast Streams: Ai dang ky lang nghe cũng được 
+
+- Redux:
+    Redux có 3 phần chính:
+
+    1. Store
+
+    Là một đối tượng, có nhiều cặp khoá ( key-value) đại diện cho trạng thái hiện tại của ứng dụng.
+    Store cung cấp trạng thái ứng dụng, mỗi khi trạng thái cập nhật, view được tải lại.
+
+    2. Action
+    Là một đối tượng, gửi thông tin từ ứng dụng lên Store và là nguồn thông tin duy nhất lên Store
+
+    3.Reducer
+    Một action mô tả vấn đề, reducer chịu trách nhiệm giải quyết vấn đề.
